@@ -139,6 +139,8 @@ STATICFILES_DIRS = (
     # STATIC_URL,
     # CSS_DIR,
     os.path.join(PROJECT_DIR, '..', 'static', 'service'),
+    os.path.join(PROJECT_DIR, '..', 'static', 'cms'),
+
 )
 
 # List of finder classes that know how to find static files in
