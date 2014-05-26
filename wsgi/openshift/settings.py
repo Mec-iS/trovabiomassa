@@ -54,7 +54,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'trovabiomassa',  # Or path to database file if using sqlite3.
+            'NAME': 'trovabiomassamulti',  # Or path to database file if using sqlite3.
             'USER': 'postgres',                      # Not used with sqlite3.
             'PASSWORD': 'poiuyt',                  # Not used with sqlite3.
             'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -252,7 +252,10 @@ INSTALLED_APPS = (
     #'cms.plugins.teaser',
     'djangocms_link',
     #'cms.plugins.video',
-    'service',
+    #'service',
+    'it',
+    'es',
+
 )
 
 # A sample logging configuration. The only tangible logging

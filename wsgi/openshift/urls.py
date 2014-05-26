@@ -58,6 +58,11 @@ urlpatterns = patterns('',
     #    'django.contrib.auth.views.password_reset_complete', {'template_name': 'users/registration/password_reset_complete.html'}, 
     #    name='password_reset_complete'),
 
+
+    # internazionalization
+    #url(r'^/es/', include(es.urls)),
+    url(r'^/it/', include('it.urls')),
+
     # administration urls
     url(r'^admin/', include(admin.site.urls)),
 
