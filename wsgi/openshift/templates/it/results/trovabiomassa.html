@@ -1,0 +1,302 @@
+{% extends "it/layout.html" %}
+
+{% block script %}
+<!-- <link rel="stylesheet" type="text/css" href="/static/css/elastislide.css" />-->
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=it"></script>
+    
+    <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+  <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
+    
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+
+{% endblock %}
+
+{% block body %}
+
+<div id="container">
+      
+      {% comment %}
+      {{product}}
+      {{path}}
+      {{URLencoded}}
+      {{URLdecoded}}
+      {% endcomment %}
+
+<div class="container" style="margin-top:2%;">
+    <div class=" col-md-10 mappa">
+        <div class="Flexible-container" id="map"></div><!-- Fine Mappa -->
+    </div>
+    <div class=" col-md-2">
+        {% for v in products %}
+            {% if v.2 == product %}
+                <div class="menu-btn-tb" style="padding-top:10%;"><a href="/it/cercabiomassa/{{v.1}}/"><i id="{{v.3}}" class="hovered icon-largesquare-effect ico-effect"></i><div class="title-element">{{v.2}}</div></a></div>      
+            {% endif %}
+        {% endfor %} 
+    </div>
+</div> 
+        
+
+
+{% csrf_token %}   
+      
+
+      
+</div>     
+
+<div id="content">
+            <div class="container">
+            
+              <!-- Start Navigation -->
+                
+                
+                
+                <!-- Start elenco aziende -->
+                <div class="row" style="margin-top:2%;">
+        
+                    <h4 class="classic-title"><span>Elenco Aziende</span></h4>
+    
+                
+<!-- start vertical scroll -->
+                   <div id="scroll-aziende" > 
+                
+
+                  </div> <!-- end vertical scroll -->
+               </div>
+            </div>
+</div>
+
+
+<script>
+// AT PAGE READY
+
+
+var map;
+var gmarkers = [];
+var image = '/static/images/map-marker.png';
+var cluster = '/static/images/map-marker02.png';
+
+var initialize = function(data) {
+            
+            /* Style of the map */
+            var styles = [
+            {
+              stylers: [
+                { hue: "#129d02" },
+                { saturation: -20 }
+              ]
+            },{
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [
+                { lightness: 100 },
+                { visibility: "simplified" }
+              ]
+            },{
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            },{
+                 featureType: "poi",
+                 elementType: "labels",
+                 stylers: [
+                   { visibility: "off" }
+                 ]
+            },{ 
+                 featureType: "administrative.country", 
+                 stylers: [ 
+                   { "visibility": "off" } 
+                 ] 
+            }
+        
+             ];
+             
+            
+          // Create a new StyledMapType object, passing it the array of styles,
+          // as well as the name to be displayed on the map type control.
+          var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+          
+          /* Lat. and Lon. of the center of the map */
+          var myCenter = new google.maps.LatLng(42.56362, 12.64266);
+          
+          // Create a map object, and include the MapTypeId to add
+          // to the map type control.
+          var mapOptions = {
+            zoom: 6,           //zoom level
+            center: myCenter,       //center position
+            scrollwheel: false,     //zoom when scroll disable
+            //zoomControl: true,      //show control zoom
+            panControl: false
+            
+            
+            //mapTypeControlOptions: {
+             // mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style'] 
+            //}
+        
+          };
+          
+          var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+          var fullBounds = new google.maps.LatLngBounds(); 
+        
+          //Associate the styled map with the MapTypeId and set it to display.
+          //map.mapTypes.set('map_style', styledMap);
+          //map.setMapTypeId('map_style');
+        
+    for (var i in data.features) {
+            
+            lat = data.features[i].geometry.coordinates[1]
+            lng = data.features[i].geometry.coordinates[0]
+
+            var place = data.features[i].properties
+            var marker = new google.maps.Marker({
+               position: new google.maps.LatLng( lat, lng ),
+               map: map,
+               title: place.company,
+               icon: image
+                      
+            });
+            
+            marker.ordered = new String(parseInt(i)+1)
+            marker.row = Math.floor(i/3)
+
+            var path = '/it/trova/'+place['slug']+'/'+place['id']+'/'+place['p_slug']+'/'
+            
+            marker.content = '<div class="popup">'+
+                             '<span style="color: #0e8b09;"><h6><a href="'+path+'"><i class="icon-mini-effect icon-effect-1 aziende-ico">'+marker.ordered+'</i></a></h6>'+
+                             '<h3>'+place.company+'</h3></span>'+
+                             '<p>'+place.address+'</b><br/>'+
+                             '<small>'+place.CAP+', '+place.city+'</small></p>'
+
+                        if (place.web != "") {marker.content += '<a target="_blank" href="'+place.web+'">'+
+                                                     'Visita il sito</a>'
+                        }                 
+
+            marker.content += '</div>';
+
+            marker.infowindow = new google.maps.InfoWindow({
+                  content: marker.content,
+                  maxWidth: 230,
+                  maxHeight: 300,
+            
+              });
+
+            // process multiple info windows
+            (function(marker, i) {
+                // add click event
+                google.maps.event.addListener(marker, 'click', function() {
+                    info = marker.infowindow
+                    info.open(map, marker);
+                });
+            })(marker, i);
+            
+            
+            // create entries in the list
+            
+            
+            
+            
+                // describe each product per company
+                var description = '<h5>PACKAGING:</h5>'+
+                                  '<ul class="icons-list">';
+                for (var j=0; j < place.list_of_packages.length; j++){
+                    //console.log(place.list_of_packages[j])
+                    description += '<li><i class="icon-check-2"></i>'+place.list_of_packages[j]+'</li>'
+                } 
+                description += '</ul>'
+            
+            if (marker.ordered == '0' || parseInt(i) % 3 == 0) {$("#scroll-aziende").append('<div id="'+marker.row+'" class="row">'); }
+            
+            div_id = '#'+marker.row
+            $(div_id).append('<div class="col-md-4"><div class="lista-aziende-item">'+
+                '<a href="'+path+'"><i class=" icon-mini-effect icon-effect-1 aziende-ico">'+marker.ordered+'</i></a><a href="'+path+'">'+
+                '<strong class="accent-color">'+place.company+'</strong></a><br>'+
+                '<p>vende '+place.product+' in<br>'
+                +description+
+                '</p><p><a href="'+path+'" class="btn-system btn-xs border-btn">Vai alla Scheda Aziendale </a>'+
+                '</p> </div></div>');
+
+            gmarkers.push(marker);
+            marker.setMap(map);
+
+           //apply full bounds
+           var point=new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+                        
+            fullBounds.extend(point);
+            //console.log(point)
+    }
+    
+    if (gmarkers.length == 0) return
+    else if (gmarkers.length != 1) map.fitBounds(fullBounds);
+    else  {
+      map.setCenter(new google.maps.LatLng(gmarkers[0].position.d, gmarkers[0].position.e));
+      map.setZoom(10);
+    }
+    
+    //console.log(gmarkers)
+    var mcOptions = {gridSize: 45, maxZoom: 15, 
+        styles: [{
+        height: 53,
+        url: cluster,
+        width: 53
+        }]};
+
+    var mc = new MarkerClusterer(map, gmarkers, mcOptions);
+}
+
+//console.log('page load')
+var input = document.getElementsByName('csrfmiddlewaretoken')[0]
+var csrftoken = input.getAttribute('value'); 
+//console.log(csrftoken)
+$.ajax({
+    url: '/it/trovabiomassa/',
+    data: {
+        csrfmiddlewaretoken :csrftoken ,
+        product:'{{URLdecoded.product|safe}}', 
+        region:'{{URLdecoded.region|safe}}', 
+        province:'{{URLdecoded.province|safe}}'
+    },
+    type: 'POST',
+    async: true,
+    success: function (data) {
+        if (data.features.length == 0) $('#scroll-aziende').html('Nessuna Azienda');
+        //console.log(data);
+        //json = JSON.stringify(data)
+        //$('#JSON').html(json);
+        initialize(data);
+        //add markers to map
+        //addMarkers(data);
+        
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+        alert('Errore:' + xhr.status);
+        alert(thrownError);
+    }
+});
+
+</script>
+
+
+{% endblock %}

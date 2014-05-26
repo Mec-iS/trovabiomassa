@@ -1,0 +1,173 @@
+{% extends "simple_layout.html" %}
+
+{% block script %}
+ <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+{% endblock %}
+
+{% block body %}
+
+<div class="hr5" style="margin-bottom:40px;"></div>
+<div id="content">
+    <div class="container">
+        <span style="color:red;"><b>{{message}}</b></span>
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                <h4>Modifica le caratteristiche del tuo prodotto</h4>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-default" href="/profile">
+                Torna   
+            </a>
+        </div>
+    </div>
+    
+        <div class="hr5" style="margin-bottom:40px;margin-top:10px;"></div>
+
+    <div class="row">
+        <form role="form" action="/accounts/database/product/modify/{{p.id}}/{{company_id}}" method="POST">{% csrf_token %} 
+            <input type="hidden" name='reseller' value="{{company_id}}">  
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="product">Tipo di prodotto:</label>
+                {{form.product}}
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="package">Packaging di vendita del prodotto:</label> 
+                {{form.package}}
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="producer">Provenienza:</label>
+                {{form.producer}}
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="certification">Certificato/i:</label>
+                {{form.certification}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">Usa Ctrl, o tieni premuto il pulsante del mouse, per selezionare pi&ugrave; certificati</p>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="">Prezzo di vendita:</label>
+                {{form.selling_price}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">es. 7.50</p>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="checkbox col-md-1">
+                    {{form.is_local}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">Selezionare se produci tu direttamente questo prodotto</p>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="checkbox col-md-1">
+                {{form.made_in_italy}}
+            </div>
+
+            <div class="col-md-5">
+                <p class="help-block">Selezionare se &egrave; prodotto all&apos;interno del territorio nazionale</p>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="checkbox col-md-1">
+                {{form.made_in_eu}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">Seleziona se &egrave; prodotto in un altro paese UE che non sia l&apos;Italia</p>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="checkbox col-md-1">
+                {{form.made_outside}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">Seleziona se &egrave; prodotto da un paese europeo che non fa parte dell&apos;Unione Europea</p>
+            </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-5">
+                <label for="specs">Specifiche prodotto:</label>
+                {{form.specs}}
+            </div>
+            <div class="col-md-5">
+                <p class="help-block">Se disponibili puoi segnalare delle caratteristiche riguardanti il prodotto, o un tuo parere personale</p>
+            </div>
+    </div>
+
+    <div class="hr5" style="margin-bottom:20px;margin-top:10px;"></div>
+
+    <div class="row" style="margin-top:3%;">
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+            <input class="form-control btn btn-primary input-lg" type="submit" value="Salva modifiche" />
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-default" href="/profile">
+                Torna   
+            </a>
+        </div>
+    </div>
+    
+        </form>
+    </div>
+</div>
+
+
+<script>
+$('select[name=product]').addClass('form-control').focus();
+$('select[name=package]').addClass('form-control');
+$('select[name=producer]').addClass('form-control');
+$('select[name=certification]').addClass('form-control');
+$('input[name=selling_price]').val('0.0');
+$('input').addClass('form-control');
+$('label').css('cursor', 'default');
+</script>
+
+<style>
+label {font-weight: bold; margin:0; padding:0;}
+.help-block { padding:10px; font-weight:bold;}
+</style>
+{% endblock %}

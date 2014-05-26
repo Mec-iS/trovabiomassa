@@ -138,7 +138,8 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     # STATIC_URL,
     # CSS_DIR,
-    os.path.join(PROJECT_DIR, '..', 'static', 'service'),
+    os.path.join(PROJECT_DIR, '..', 'static', 'it'),
+    os.path.join(PROJECT_DIR, '..', 'static', 'es'),
     os.path.join(PROJECT_DIR, '..', 'static', 'cms'),
 
 )

@@ -1,0 +1,318 @@
+{% extends "it/simple_layout.html" %}
+
+{% block script %}
+
+     <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=it"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+{% endblock %}
+
+{% block body %}
+
+{% with data=geolocate.features.0 %}
+
+<!-- Start Page Banner -->
+        <div class="page-banner" style="padding:8px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>{{data.properties.company}}</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="breadcrumbs">
+                            <li><a href="/it">Home</a></li>
+                            <li><a href="/it/cercabiomassa/{{product}}/">cerca azienda</a></li>
+                            <li>dettaglio azienda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+
+<div class="container">
+
+
+<br/>
+
+<!-- Mappa -->
+<div class=" col-md-8 mappa">
+        <div class="Flexible-container" id="map"></div><!-- Fine Mappa -->
+</div>
+
+<!-- Contatti Azienda -->
+          <div class="col-md-4">  <!-- Classic Heading -->
+                        <h4 class="classic-title"><span>Contatta questa azienda</span></h4>
+                        
+                        <!-- Some Info -->
+                        <p>per maggiori informazioni sui loro prodotti:</p>
+                        
+                        <!-- Divider -->
+                        <div class="hr1" style="margin-bottom:10px;"></div>
+                      
+                        <!-- Info - Icons List --> 
+                        <ul class="icons-list">
+                            <li><i class="icon-location-1"></i> <strong>Indirizzo: <br/></strong>{{data.properties.address}}, 
+                            {{data.properties.CAP}} - {{data.properties.city}}, {{data.properties.province}}</li>
+                            <li><i class="icon-mail-1"></i> <strong>Email: </strong>{{data.properties.email}}</li>
+                            <li><i class="icon-mobile-1"></i> <strong>Telefono: </strong>{{data.properties.tel}}</li>
+                        </ul>
+                      
+                        <!-- Divider -->
+                        <div class="hr1" style="margin-bottom:15px;"></div>
+                      
+                        <!-- Classic Heading 
+                        <h4 class="classic-title"><span>Orari d'apertura</span></h4>
+                      
+                        <!-- Info - List
+                        <ul class="list-unstyled">
+                            <li><i class="icon icon-time"></i> <strong>Lunedi - venerdi</strong> - 9:00 - 19:00</li>
+                            <li><i class="icon icon-time"></i> <strong>Sabati</strong> - 9:00 - 13:00</li>
+                            <li><i class="icon icon-time"></i> <strong>Domenica</strong> - Chiuso</li>
+                        </ul>              </div> <!-- end sidebar -->
+          
+          </div> 
+
+<!-- Start Content -->
+        <div id="content">
+          <div class="container">
+            
+              <!-- Start Navigation -->
+             
+         <div class="row">
+          <div class="col-md-12">
+          
+          
+          
+           <div class="col-md-8  service-boxed service-azienda">
+           
+            <!-- Classic Heading --> <h4 class="classic-title"><span>Info azienda</span></h4>
+            <div class="row msa">
+             <div class="col-xs-4 proprieta-scheda">Tipologia Azienda</div>
+              <div class="col-xs-8">{% for p in data.properties.position %}{{p}}<br>{% endfor %}</div>
+            </div> <!-- end row -->
+            
+            <div class="row msa">
+             <div class="col-xs-4 proprieta-scheda">SITO INTERNET</div>
+              <div class="col-xs-8"><a href="{{data.properties.web}}">{{data.properties.web}}</a></div>
+            </div> <!-- end row -->
+            
+             <!-- Divider -->
+                        <div class="hr5" style="margin-bottom:40px;"></div>
+            
+             <div class="row msa">
+             <div class="col-xs-4 proprieta-scheda">PRODOTTI VENDUTI</div>
+              <div class="col-xs-8">{% for p in data.properties.selling %}{{p}}<br>{% endfor %} </div>
+            </div> <!-- end row -->
+            
+          
+          <!-- Divider -->
+                        <div class="hr5" style="margin-bottom:40px;"></div>   
+            <div class="tabs-section">
+                            
+                            <!-- Nav Tabs -->
+                            <ul class="nav nav-tabs">
+                               {% for p in data.properties.selling %}
+                               <li class="{% if forloop.counter == 1 %}active{% endif %}"><a href="#tab-{{forloop.counter}}" data-toggle="tab"><i class="icon-fire"></i>{{p}}</a></li>
+                               {% endfor %}
+                            </ul>
+                            
+                            <!-- Tab panels -->
+                            <div class="tab-content">
+                                {% for p in data.properties.selling %}
+                                <div class="tab-pane fade in {% if forloop.counter == 1 %}active{% endif %}" id="tab-{{forloop.counter}}">
+                                    
+                                      <table id="offers" class="table table-condensed">
+                                            <tr><th>PACKAGING</th><th>PROVENIENZA</th><th style="text-align:center;">Prodotto<br>ITALIANO</th><th style="text-align:center;">Prodotto<br>in UE</th><th style="text-align:center;">CERTIF.NI</th><th>TRASPORTO</th><th>PREZZO</th></tr>
+                                            {% for o in data.properties.offers %}
+                                              {% if o.product == p %}
+                                                <tr><td><i class="icon-beaker"></i>{{o.package}}</td>
+                                                    <td><strong>{{o.produced_in}}</strong> {% if o.producer|safe != '' %} - {{o.producer}}{% endif %}</td>
+                                                    <td style="text-align:center;">{% if o.made_in_italy|safe == 'True' %}<i class="icon-check-2"></i>{% endif %}</td>
+                                                    <td style="text-align:center;">{% if o.made_in_eu|safe == 'True' %}<i class="icon-check-2"></i>{% endif %}</td>
+                                                    <td style="text-align:center;">{% for c in o.certificates %}
+                                                      {{c|safe}}<br/>
+                                                      {% endfor %}
+                                                    </td>
+                                                    <td>{% if o.couriers|safe  == '[]' %}non<br/>specificato{% else %} 
+                                                      {% for c in o.couriers %}
+                                                      <a href="/trova/{{c.2}}/{{c.1}}/{{o.product_slug}}">{{c.0}}</a> <br/>
+                                                      {% endfor %} 
+                                                      {% endif %}</td>
+                                                    <td><strong>{% if o.price|safe  == '0.0' %}non<br/>specificato{% else %}
+                                                      &euro; {{o.price}}
+                                                      {% endif %}
+                                                    </strong></td>
+                                                </tr>
+                                              {% endif %}
+                                            {% endfor %} 
+                                       </table>
+                                
+                                </div>
+                                {% endfor %}
+                               
+                            </div>
+                            <!-- End Tab Panels -->
+                          
+                        </div> <!-- End Tab Section -->
+
+            
+            
+            
+           </div> <!-- fine col8 -->
+           
+           
+           
+           
+           <!-- FINE ZEZIONE col12 -->
+         
+         </div>
+          </div>
+   
+        </div>
+        <!-- End Content -->
+</div>
+
+ <!-- Start Page Menu -->
+        <div class="page-banner" style="padding:8px 0; background: url(/static/images/slide-02-bg.jpg) center #f9f9f9;">
+            <div class="container">
+                <div class="row" id="back-search">
+               
+               <a href="/it/cercabiomassa" class="btn-system btn-large btn-gray"><i class="icon-left-dir"></i><strong> TORNA ALLA RICERCA</strong></a>
+               
+                
+                </div>
+            </div>
+        </div>
+        <!-- End Page Menu -->
+
+{% endwith %}
+
+<script>
+
+// initilazises
+var map;
+
+var data = {{JSON|safe}}
+
+console.log(data)
+
+var image = '/static/images/map-marker.png';
+
+// MAP
+
+lat = data.geometry.coordinates[1]
+lng = data.geometry.coordinates[0]
+
+var place = data.properties
+
+ /* Style of the map */
+var styles = [
+        {
+          stylers: [
+            { hue: "#129d02" },
+            { saturation: -20 }
+          ]
+        },{
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
+            { lightness: 100 },
+            { visibility: "simplified" }
+          ]
+        },{
+          featureType: "road",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+        },{
+             featureType: "poi",
+             elementType: "labels",
+             stylers: [
+               { visibility: "off" }
+             ]
+        },{ 
+             featureType: "administrative.country", 
+             stylers: [ 
+               { "visibility": "off" } 
+             ] 
+        }
+    
+];
+         
+        
+    // Create a new StyledMapType object, passing it the array of styles,
+    // as well as the name to be displayed on the map type control.
+    var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+      
+    /* Lat. and Lon. of the center of the map */
+    var myCenter = new google.maps.LatLng(lat, lng);
+      
+    // Create a map object, and include the MapTypeId to add
+    // to the map type control.
+    var mapOptions = {
+        zoom: 13,           //zoom level
+        center: myCenter,       //center position
+        scrollwheel: false,     //zoom when scroll disable
+        //zoomControl: true,      //show control zoom
+        panControl: false
+        
+        
+    //mapTypeControlOptions: {
+    // mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style'] 
+    //}
+    
+    };
+      
+    var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+
+
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng( lat, lng ),
+        map: map,
+        title:data.properties.company,
+        icon: image
+    });
+        
+    marker.packaging = '<h5>PACKAGING:</h5>'+
+                       '<ul class="icons-list">';
+    for (var j=0; j < place.offers.length; j++){
+        //console.log(place.offers[j])
+        marker.packaging += '<li><i class="icon-check-2"></i>'+place.offers[j]['package']+'</li>'
+    } 
+    marker.packaging += '</ul>'
+  
+    marker.setMap(map);
+
+
+    $("#packaging").append(marker.packaging)
+
+// END MAP
+</script>
+
+{% endblock %}

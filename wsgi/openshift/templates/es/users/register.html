@@ -1,0 +1,114 @@
+{% extends "simple_layout.html" %}
+
+{% block script %}
+ <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+{% endblock %}
+
+
+{% block body %}
+
+<div id="content">
+	<div class="container">
+		<h5>{% if message %} {{message}}: <a href="/register">Torna al form</a>.{% endif %}</h5>
+    {% if not message %}
+	<div class="row">
+ 		<div class="col-md-2"></div>
+
+			<div class="col-md-10">
+				<p><h2>Presenta  la tua Azienda in TrovaBiomassa</h2></p>
+				<p class="message-unit" style="margin:3%;">
+				<legend>Registrati per:</legend> 
+				 <ul>
+				   <li>avere il tuo profilo aziendale: dare visibilit&agrave; alle tue offerte</li>
+                   <li>inserire sulla mappa la tua azienda</li>
+                   <li>avere una pagina dedicata alle tue informazioni aziendali e ai tuoi prodotti all&apos;interno della piattaforma</li>
+				 </ul>
+				</p>
+
+				<p class="message-unit" style="margin:3%;">
+				  <legend>Inserisci i dati per la registrazione:</legend>
+				</p>
+		    </div>
+    </div>
+    <div class="row">
+    	<form role="form" action="/register" method="POST" id="signForm">{% csrf_token %}   
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			    {{form.sender.label}}: {{form.sender}}
+			</div>
+    </div>
+    <div class="row">
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			   {{form.name.label}}: {{form.name}}
+			</div>
+    </div>
+    <div class="row">
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			   {{form.lastname.label}}: {{form.lastname}}
+			</div>
+    </div>
+    <div class="row">
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			   {{form.firm.label}}: {{form.firm}}
+			</div>
+    </div>
+    <div class="row">
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			   {{form.phone.label}}: {{form.phone}}
+			</div>
+    </div>
+    <div class="row">
+    	    <div class="col-md-2"></div>
+		    <div class="form-group col-md-7">
+			   <span class="col-md-9">Ho letto e <u>accetto</u> le condizioni per il <a href="/privacy">trattamento dei dati</a>:</span>
+			   <span class="col-md-2">{{form.privacy}}</span>
+			</div>
+    </div>
+    
+    <div class="row" style="margin-top:3%;">
+    	<div class="col-md-4"></div>
+	    <div class="col-md-4">
+		    <input id="submit-signup" class="form-control btn btn-primary input-lg" type="submit" value="Registrati" />
+		</div>
+    </div>
+    
+    </form>
+    {% endif %}
+    </div>
+</div>
+
+<script>
+$('input[name=sender]').addClass('form-control').attr('placeholder', "A quale email vuoi essere contattato?");
+$('input[name=name]').addClass('form-control').attr('placeholder', "Qual'è' il tuo nome di battesimo?");
+$('input[name=lastname]').addClass('form-control').attr('placeholder', "Qual'è il tuo cognome?");
+$('input[name=firm]').addClass('form-control').attr('placeholder', "Nome della tua Azienda e località?");
+$('input[name=phone]').addClass('form-control').attr('placeholder', "Telefono? (opzionale)");
+$('input[name=privacy]').addClass('form-control')
+</script>
+
+{% endblock %}

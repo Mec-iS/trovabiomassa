@@ -1,0 +1,328 @@
+{% extends "layout.html" %}
+
+{% block script %}
+    <!-- trovabiomassa JS  -->
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script>
+product = '{{product}}'
+var pdcts = {{pdctsJSON|safe}}
+console.log(pdcts)
+var icon = 'ico-'+pdcts[product]
+console.log(icon)
+</script>
+
+{% endblock %}
+
+
+{% block body %}
+
+{% if message %} {{message}}{% endif %}
+
+<!-- Start Page Menu -->
+		<div class="page-banner" style=" padding:8px 0 16px 0; background: url(/static/images/slide-02-bg.jpg) center #f9f9f9;">
+			<div class="container">
+				<div class="row">
+                <div id="main-nav">
+		            {% for v in products %}
+                                   {% if v.2 != product %}
+                            <div class="menu-btn-tb"><a href="/cercabiomassa/{{v.1}}/"><i id="{{v.3}}" class="icon-largesquare-effect ico-effect"></i></a><div class="title-element">{{v.2}}</div></div>      
+                                   {% endif %}
+                            {% endfor %}		
+                </div>
+                
+                </div>
+                
+            <!--- Start Product search --->
+            
+            <div class="row" style="margin-top:3%;">
+                    
+                        <!-- Start Image Service Box 1 -->
+                        <div class="col-sm-2 image-service-box">
+                        <div id="page_icon" class="">Cerca:
+                           <i id="" style="width:80px;" class="ico-product icon-largesquare-effect ico-effect"><h4 style="color: #999;">{{product}}</h4></i></div>                            
+                        </div>
+                        <!-- End Image Service Box 1 -->
+                        
+                        <!-- Start Image Service Box 2 -->
+                        <div class="col-sm-4 image-service-box">
+                            
+                            <ul class="scheda-list">
+                            <li>in<h4>Regione</h4></li>
+                            <li><select class="form-control" id="reg">
+                                <option value="0"></option>
+                                {% for k,v in regions.items %}
+                                    {% if k == region %}
+                                        <option value="{{v.0|safe}}" selected="selected">{{k|safe}}</option>
+                                    {% else %}
+                                 <option value="{{v.0|safe}}">{{k|safe}}</option>
+                                    {% endif %}
+                      
+                                {% endfor %}
+                            </select></li>
+                            <li><h4>Provincia</h4></li>
+
+             <li><select class="form-control" name="prov" id="prov">
+                    <option value="0"></option>
+                    </select></li>
+
+
+
+
+                        <!-- End Image Service Box 2 -->
+                
+
+<li><a href="#" class="btn-large btn-trovabiomassa" id="biomassa-searchFuel" name="searchFuel">Trova Biomassa</a></li>
+
+
+    </ul>           </div>
+                        <!-- End Image Service Box 3 -->
+                        
+       <div class="col-sm-2 image-service-box"></div>  
+                        
+                    </div>
+            
+            <!-- end product search -->    
+                
+                
+                
+			</div>
+		</div>
+		<!-- End Page Menu -->
+
+        
+		<!-- Start Content -->
+		<div id="content">
+			<div class="container">
+            
+              <!-- Start Navigation -->
+             
+       
+         
+                <!-- Divider -->
+              <div class="hr5" style="margin-top:40px; margin-bottom:40px;"></div>
+                
+                <!-- Start tab -->
+                <div class="row">
+                    <div class="tabs-section">
+                            
+                            <!-- Nav Tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="icon-doc-text-1"></i>Descrizione</a></li>
+                                <li><a href="#tab-2" data-toggle="tab"><i class="icon-beaker"></i>PCI</a></li>
+                                <li><a href="#tab-3" data-toggle="tab"><i class="icon-ajust"></i>Densità</a></li>
+                                <li><a href="#tab-4" data-toggle="tab"><i class="icon-flag"></i>Storia</a></li>
+                                <li><a href="#tab-5" data-toggle="tab"><i class="icon-droplet"></i>Certificazioni</a></li>
+                            </ul>
+                            
+                            <!-- Tab panels -->
+                            <div class="tab-content">
+                                <!-- Tab Content 1 -->
+                                <div class="tab-pane fade in active" id="tab-1">
+                                	<p><strong class="accent-color">Sed ut perspiciatis</strong> unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explica. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <div class="row">
+                                    	<div class="col-md-6">k
+                                        	<ul class="icons-list">
+                                                <li><i class="icon-check-2"></i> Duis aute irure dolor in reprehenderit voluptate.</li>
+                                                <li><i class="icon-check-2"></i> Lorem Ipsum is simply dummy text of printing.</li>
+                                                <li><i class="icon-check-2"></i> Excepteur sint occaecat cupidatat proident.</li>
+                                                <li><i class="icon-check-2"></i> Sed ut perspiciatis unde omnis iste natus.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                        	<ul class="icons-list">
+                                                <li><i class="icon-check-2"></i> Duis aute irure dolor in reprehenderit voluptate.</li>
+                                                <li><i class="icon-check-2"></i> Lorem Ipsum is simply dummy text of printing.</li>
+                                                <li><i class="icon-check-2"></i> Excepteur sint occaecat cupidatat proident.</li>
+                                                <li><i class="icon-check-2"></i> Sed ut perspiciatis unde omnis iste natus.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tab Content 2 -->
+                                <div class="tab-pane fade" id="tab-2">
+                                	<p><img class="img-thumbnail image-text" style="float:left; width:180px;" alt="" src="/static/images/logo-slider01.png" /></p>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explica. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rational encounter consequences that are extremely painful.</p>
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rational encounter consequences that are extremely painful.</p>
+                                </div>
+                                <!-- Tab Content 3 -->
+                                <div class="tab-pane fade" id="tab-3">
+                                	<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rational encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure.</p>
+                                </div>k
+                                <!-- Tab Content 4 -->
+                                <div class="tab-pane fade" id="tab-4">
+                                	<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rational encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure.</p>
+                                </div>
+                                <!-- Tab Content 5 -->
+                                <div class="tab-pane fade" id="tab-5">
+                                	<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rational encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure.</p>
+                                </div>
+                            </div>
+                            <!-- End Tab Panels -->
+                          
+                        </div>
+                
+                </div>
+                <!-- End tab -->
+                
+           <!-- Divider -->
+                <div class="hr5" style="margin-top:40px; margin-bottom:40px;"></div>    
+                         
+		  </div>
+		</div>
+		<!-- End Content -->
+      
+
+
+
+
+
+<script>
+$(document).ready(function () {
+$("#page_icon").children().attr('id', icon)
+
+/* INIT STATE */
+var regions = {{regionsJSON|safe}};
+/*
+{"Lazio": ["lazio", [["Roma", "roma"]]], "Toscana": ["toscana", [["Firenze", "firenze"]]], "Umbria": ["umbria", [["Perugia", "perugia"], ["Terni", "terni"]]]};
+*/
+
+/*
+{"Centrale": "centrale", "Sansa vergine essiccata": "sansa+vergine+essiccata", "Gusci di pinoli": "gusci+di+pinoli", "Cippato": "cippato", "Gusci di mandorla": "gusci+di+mandorla", "Inserto per camino": "inserto+per+camino", "Trasporto": "trasporto", "Termocamino": "termocamino", "Nocciolo di pesca": "nocciolo+di+pesca", "Stufa": "stufa", "Pellet": "pellet", "Gusci di nocciola": "gusci+di+nocciola", "Legna da ardere": "legna+da+ardere", "Nocciolino di sansa": "nocciolino+di+sansa", "Sansa esausta": "sansa+esausta"}
+*/
+
+var initState = { pdct : pdcts['{{product|safe}}'], 
+                 region:'', 
+                 province:''
+               };
+var state = {};
+
+var provSelect = document.getElementById('prov');
+var regSelect = document.getElementById('reg');
+
+var resetSelects = function(){
+    var Selects = document.getElementsByTagName('select');
+    for (var i=0;i<Selects.length;i++){
+        if (i > 0){
+           obj = Selects[i]
+           obj.value = 0
+           provSelect.setAttribute('disabled', 'disabled');
+        }
+    }
+    console.log("before:", state)
+    state = { pdct : pdcts['{{product|safe}}'], 
+                 region:'', 
+                 province:''
+               };
+    console.log("after:", state)
+    
+}
+resetSelects()
+
+$("#reg").on('change',  function(e){
+                        console.log($(this).val())
+                        
+                        if ($(this).val() != '0') {
+                             //enable and populate province select
+                             var s = $(this).children("option").filter(":selected").text()
+                             console.log(s)
+                             provSelect.removeAttribute('disabled');
+                             $('#prov').find('option').remove().end()
+                             
+                             var option = '<option value=""></option>';
+                             var provList = regions[s]
+                             for (i=1;i<provList.length;i++){
+                                  option += '<option value="'+ provList[i][0][1] + '">' + provList[i][0][0] + '</option>';
+                             }
+                             $('#prov').append(option);
+                             state.region = $(this).val()
+                             
+                        }
+                        else resetSelects()
+                        console.log(state)
+          })
+
+$("#prov").on('change',  function(e){
+                        state.province = $(this).val() 
+                        console.log(state)
+          });
+
+$("#biomassa-searchFuel").on('click', function(){ 
+                              console.log(state)
+                              path = location.host
+                              path += '/trovabiomassa/'+state.pdct+'/'
+          
+       
+                              if (!state.region == '') path += state.region+'/'
+                              if (!state.province == '') { path += state.province+'/'; }
+                              console.log(path) 
+                              window.location.href = 'http://'+path
+          });
+
+
+console.log(provSelect.disabled);
+
+var searchFuel = function(state, prov, reg){
+    province = ''
+    
+    if (reg != ''){
+    reg = regions[reg][1]
+       
+    for (var i=0;i<reg.length;i++){
+         var e = reg[i]
+         console.log('here', e)
+         if (e[0] == prov) province = e[1]
+    }
+    state.province = province;
+    console.log(state)
+    }
+    path = location.host
+    path += '/trovabiomassa/'+state.pdct+'/'
+          
+       
+       if (!state.region == '') path += state.region+'/'
+       if (!state.province == '') { path += state.province+'/'; }
+    console.log(path) 
+    window.location.href = 'http://'+path
+    
+    
+    //path = parseURL(document.URL)
+    //path = path.segments
+    //console.log(path)
+    //window.location.href = 'http://'+path[1]+'/'+ 
+ 
+
+
+}
+
+
+});
+</script> 
+
+
+  
+{% endblock %}

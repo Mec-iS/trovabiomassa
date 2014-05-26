@@ -11,8 +11,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     
-    url(r'^/it/$', 'it.views.home', name='home_it'),
-
     url(r'^', include('cms.urls')),
 
 )

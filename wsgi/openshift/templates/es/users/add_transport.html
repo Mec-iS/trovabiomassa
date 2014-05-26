@@ -1,0 +1,67 @@
+{% extends "simple_layout.html" %}
+
+{% block script %}
+ <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+{% endblock %}
+
+{% block body %}
+
+<div class="hr5" style="margin-bottom:40px;"></div>
+<div id="content">
+    <div class="container">
+        <span style="color:red;"><b>{{message}}</b></span>
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                <h4>Seleziona l&apos;azienda che si occupa della eventuale consegna dei prodotti di questo punto vendita (puoi anche non selezionare o segnalare la tua stessa azienda se te ne occupi direttamente)</h4>
+            </p>
+        </div>
+    </div>
+    <div class="row" style="margin-top:3%;">
+    <form role="form" action="/accounts/database/transport/add/{{company_id}}" method="POST">{% csrf_token %} 
+        <div class="row">
+            <div class="col-md-8">
+            {{form.courier}}
+            </div>
+        </div>
+        <div class="row" style="margin-top:3%;">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <input class="form-control btn btn-primary input-lg" type="submit" value="Salva" />
+            </div>
+            <div class="col-md-2">
+            <a class="btn btn-default" href="/profile">
+                Torna   
+            </a>
+            </div>
+        </div>
+    </form>
+    </div>
+    </div>
+</div>
+
+<script>
+$('select[name=courier]').addClass('form-control');
+</script>
+{% endblock %}

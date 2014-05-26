@@ -1,0 +1,125 @@
+{% extends "it/simple_layout.html" %}
+
+{% block script %}
+ <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+{% endblock %}
+
+{% block body %}
+
+<div class="hr5" style="margin-bottom:40px;"></div>
+<div id="content">
+    <div class="container">
+        {{message}}
+        <div class="row">
+            <p>
+                <h2>Gestione Profilo</h2>
+            </p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <p><strong>Questi sono i prodotti che vendi</strong></p>
+                <div class="hr5" style="margin-bottom:40px;margin-top:10px;"></div>
+            </div>
+        </div>
+        
+        {% for c in company %}
+        <div class="row">
+            <div>
+                <p><span style="font-size: 1.2em;font-weight:bold;">
+                    <a href="#" data-toggle="collapse" data-target="#panel{{forloop.counter}}">
+                        <u>Punto vendita {{forloop.counter}}: </u></a>
+                    </span>{{c.name}}</strong>
+                </p>
+                <p><strong>sito in: </strong> {{c.address}}, {{c.city}}</p>
+                <p><strong>per trasporto materiali rivolgersi a: </strong> 
+                                        {% if c.courier|safe  == '[]' %}
+                                            non specificato
+                                        {% else %}
+                                            {% for e in c.courier %}
+                                                {{e}}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </p>
+            </div>
+        </div>
+            
+        <div class="row collapse" id="panel{{forloop.counter}}">
+            <div class="col-md-8">
+
+                <table class="table">
+                    <thead>
+                        <tr><th>Prodotti</th><th>tipo packaging</th><th>produttore</th><th>prezzo</th><th>cancella</th><th>modifica</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for p in c.products %}
+                             <tr><td>{{p.product.name}}</td><td>{{p.package.name}}</td><td>{{p.producer.name}}</td>
+                                <td>{{p.selling_price}}</td>
+                                <td><a class="btn btn-default" href="/accounts/database/product/remove/{{p.id}}"><i class="icon-cancel"></i></a>
+                                </td>
+                                <td><a class="btn btn-default" href="/accounts/database/product/modify/{{p.id}}/{{c.id}}"><i class="icon-pencil"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+       
+            <div class="col-md-3" style="margin-left:3%;">
+
+                <div class="row" style="margin-bottom:10px;margin-top:10px;">
+                    <a class="btn btn-default" href="/accounts/database/product/add/{{c.id}}">Aggiungi prodotto</a>
+                </div>
+
+                <div class="row" style="margin-bottom:10px;margin-top:10px;">
+                    <a class="btn btn-default" href="/accounts/database/transport/add/{{c.id}}">Seleziona trasporto</a>
+                </div>
+
+
+                <div class="hr5" style="margin-bottom:20px;margin-top:10px;"></div>
+                
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="hr5" style="margin-bottom:20px;margin-top:10px;"></div>
+
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <a class="btn btn-default" href="{% url 'password_reset' %}">Cambia password</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+$('a[data-toggle="collapse"]').click(function(e){
+    e.preventDefault();
+    $(this).data('target').slideToggle();
+});
+</script>
+{% endblock %}

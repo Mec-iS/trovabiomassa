@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<script type="text/javascript" src="https://www.google.it/jsapi"></script>
+<script>
+    google.load("maps", "3", {other_params:"sensor=false&language=it"});    
+</script>
+
+<div id="container">
+{% with data=geolocate.features.0 %}
+<h2>{{data.properties.company}}</h2>
+<br/>
+<h4> informazioni azienda </h4>
+
+<div class="row">
+<div id="map" class="col-md-10 Flexible-container" style="min-width:88%; height:200px;border:1px solid;">
+
+</div>
+</div>
+
+<p>
+{{data.properties.address}}, {{data.properties.city}}, {{data.properties.CAP}},
+{{data.properties.region}}<br/>
+</p>
+
+<br/> 
+<h4>Vende:</h4>
+<br/> 
+<pre> 
+{% for offer in data.properties.offers %}
+   {{offer.product}} | {{offer.package}} | {{offer.price}} euro| {{offer.certificates|safe}} | prodotto da: {{offer.producer}} | {{offer.rating}}
+    | prodotto locale? {{offer.is_local}} | prodotto italiano? {{offer.made_in_italy}} | prodotto in altro paese ue? {{offer.made_in_eu}} |
+    prodotto fuori da ue? {{offer.made_outside}}
+   {% endfor %}
+
+</pre>
+
+lat/lng - {{data.geometry.coordinates.1}} | {{data.geometry.coordinates.0}} 
+
+<br/> 
+<p>vetrina</p>
+
+<br/>
+<h4><a href="#" onclick="window.close();return false;">Torna Indietro</a></h4>
+</div>
+{% endwith %}
+{% endblock%}
+
+{% block script %}
+<script>
+
+// initilazises
+var map;
+
+var data = {{JSON|safe}}
+
+// MAP
+
+lat = data.geometry.coordinates[1]
+lng = data.geometry.coordinates[0]
+
+var centerCoord = new google.maps.LatLng(lat,lng); // definisce coordinate per il centro
+var mapOptions = {
+        zoom: 12,
+        center: centerCoord,
+        panControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{ "featureType": "administrative.country", "stylers": [ { "visibility": "off" } ] }]
+};
+
+    //document.getElementById("map").style.heigth = window.innerWidth*0.85
+var map = new google.maps.Map(document.getElementById("map"), mapOptions); // inizializza mappa vuota
+ 
+
+
+
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng( lat, lng ),
+    map: map,
+    title:data.properties.company
+                  
+    });
+marker.setMap(map);
+
+
+
+// END MAP
+</script>
+
+{% endblock %}

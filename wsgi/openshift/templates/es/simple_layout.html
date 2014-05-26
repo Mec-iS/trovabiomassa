@@ -1,0 +1,304 @@
+{% load cms_tags sekizai_tags %}
+<!DOCTYPE HTML>
+<!--[if IE 8 ]><html class="ie ie8" lang="es"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><html lang="es" class="no-js"> <![endif]-->
+<html lang="es">
+<head>
+{% if title %}
+    <title>{{title}}</title>
+{% else %}
+    <title>Trova la BioMassa che ti serve! Pellet Sansa Legna e altro</title> 
+{% endif %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+{% if meta %}
+    <meta name="keywords" content="Biomassa {{title}}">
+    <meta name="description" content="biomassa ingrosso negozi produzione vendita stufa caldaia {{title}}">
+{% else %}
+    <meta name="description" content="biomassa ingrosso negozi vendita produzione magazzino agricolo pellet sansa legna">
+    <meta name="keywords" content="Biomassa stufa caldaia pellet vendita produzione">
+{% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+    
+    
+    <!-- Bootstrap CSS  -->
+	<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" media="screen">
+  
+    <!-- Revolution Banner CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/settings.css" media="screen" />
+  
+    <!-- trovabiomassa CSS Styles  -->
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen">
+  
+    <!-- Responsive CSS Styles  -->
+	<link rel="stylesheet" type="text/css" href="/static/css/responsive.css" media="screen">
+    
+    <!-- Css3 Transitions Styles  -->
+	<link rel="stylesheet" type="text/css" href="/static/css/animate.css" media="screen">
+  
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="/static/css/colors/green.css" title="green" media="screen" />
+
+    <!-- Fontello Icons CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="/static/css/fontello.css" media="screen">
+    <!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+
+ {% render_block "css" %}
+
+{% block script %}
+{% endblock %}
+
+</head>
+
+<body>
+
+	<!-- Container -->
+	<div id="container">
+		
+        <!-- Start Header -->
+		<div class="hidden-header"></div>
+        <header class="clearfix">
+            
+            <!-- Start Top Bar -->
+			<div class="top-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+                            <!-- Start Contact Info -->
+                            {% if not user.is_authenticated %}
+							<ul class="contact-details">
+                                <li><a href="/it"><i class="icon-flag"></i>IT</a></li>
+                                <li><a href="/es"><i class="icon-flag"></i>ES</a></li>
+                            	<li><a href="#"><i class="icon-mobile-2"></i> +39 348 776 5060</a></li>
+                                <li><a href="#"><i class="icon-mail-2"></i> info@trovabiomassa.com</a></li>
+                            </ul>
+                            {% endif %}
+                            <!-- End Contact Info -->
+						</div>
+						<div class="col-md-6">
+                            <!-- Start Social Links -->
+							<ul class="social-list">
+                            <li>
+                            	{% if user.is_authenticated %}
+                            	    <li>
+                                        <a  class="login-social" data-placement="bottom" title="Profile" href="/es/profile"><span class="label label-default">Profilo</span></a>
+                                    </li>
+                                    <li>
+                                        <a  class="login-social" data-placement="bottom" title="Profile" href="/es/cercabiomassa"><span class="label label-default">Ricerca</span></a>
+                                    </li>
+                                    <li>
+                                        <a  class="login-social" data-placement="bottom" title="Logout" href="/es/accounts/logout/"><span class="label label-default">Logout</span></a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a  class="login-social" data-placement="bottom" title="Profile" href="/es/energia"><span class="label label-default">Biomasse</span></a>
+                                    </li>
+                                    <li>
+                                        <a  class="login-social" data-placement="bottom" title="Login" href="/es/accounts/login"><span class="label label-default">Login Aziende</span></a>
+                                    </li>
+                                {% endif %}
+								<li>
+									<a class="facebook sh-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/trovabiomassa"><i class="icon-facebook-2"></i></a>
+								</li>
+								<li>
+									<a class="twitter sh-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/trovabiomassa"><i class="icon-twitter-2"></i></a>
+								</li>
+								<li>
+									<a class="google sh-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="icon-gplus"></i></a>
+								</li>
+                                <li>
+									<a class="linkdin sh-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="icon-linkedin"></i></a>
+								</li>
+								<li>
+									<a class="skype sh-tooltip" data-placement="bottom" title="Skype" href="#"><i class="icon-skype-2"></i></a>
+								</li>
+							</ul>
+                            <!-- End Social Links -->
+						</div>
+				  </div>
+				</div>
+			</div>
+            <!-- End Top Bar -->
+          
+			<!-- Start Header ( Logo & Navigation ) -->
+			<div class="navbar navbar-default navbar-top">
+				<div class="container">
+                
+					<div class="navbar-header col-md-2">
+                    
+                        <!-- Stat Toggle Nav Link For Mobiles 
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<i class="icon-menu-1"></i>
+						</button>
+                        <!-- End Toggle Nav Link For Mobiles -->
+						<a class="navbar-brand" href="/es"><img alt="" src="/static/images/logo.png"></a>
+					</div>
+                    
+                   
+               <!--
+               <div class="col-md-4" id="btn-azienda" style="float:right">
+               <a href="#" class="btn-system btn-large">SEI UN PRODUTTORE O RIVENDITORE DI BIOMASSA?<br> <strong>INSERISCI LA TUA AZIENDA</strong></a>
+               </div>
+               -->
+               
+				</div>
+			</div>
+            <!-- End Header ( Logo & Naviagtion ) -->
+          
+		</header>
+		<!-- End Header -->
+
+
+<!-- PAGE CONTENT -->  
+      {% cms_toolbar %}
+      {% placeholder base_content %}
+      {% block base_content %}{% endblock %}
+{% block body %}
+{% endblock %}
+<!-- END -->
+
+
+
+<!-- Start Footer -->
+		<footer style="margin-top:3%;">
+			<div class="container">
+				<div class="row footer-widgets">
+                  
+                    <!-- Start Contact Widget -->
+					<div class="col-md-3">
+                        <div class="footer-widget contact-widget">
+							<h4>Contatti<span class="head-line"></span></h4>
+							<ul>
+								<li><span>Indirizzo:</span> Via Pola, 29 - Terni</li>
+								<li><span>Telefono:</span> +39 348 776 5060</li>
+								<li><span>Email:</span> <a href="mailto:info@trovabiomassa.com">info@trovabiomassa.com</a></li>
+                                <li><span>Website:</span> www.trovabiomassa.com</li>
+							</ul>
+						</div>
+					</div>
+                    <!-- End Contact Widget -->
+                  
+                    <!-- Start Flickr Widget -->  
+                    <div class="col-md-3">
+						
+					</div>
+                    <!-- End Flickr Widget -->
+                    
+                    <!-- Start Twitter Widget -->
+					<div class="col-md-3">
+						
+					</div>
+                    <!-- End Twitter Widget -->
+                    
+					<!-- Start Subscribe & Social Links Widget -->
+                    <div class="col-md-3">
+						<div class="footer-widget mail-subscribe-widget">
+							<h4>Rimani in contatto<span class="head-line"></span></h4>
+							<p>Iscriviti alla newsletter</p>
+							<form class="subscribe" method="POST" action="/subscribe">{% csrf_token %}
+								<input type="text" name="subscriber" placeholder="Inserisci email">
+								<input type="submit" class="main-button" value="Invia">
+							</form>
+						</div>
+                        <div class="footer-widget social-widget">
+							<h4>Seguici<span class="head-line"></span></h4>
+                            <ul class="social-icons">
+								<li>
+									<a class="facebook" href="https://www.facebook.com/trovabiomassa"><i class="icon-facebook-2"></i></a>
+								</li>
+								<li>
+									<a class="twitter" href="https://twitter.com/trovabiomassa"><i class="icon-twitter-2"></i></a>
+								</li>
+								<li>
+									<a class="google" href="#"><i class="icon-gplus-1"></i></a>
+								</li>
+                                <li>
+									<a class="linkdin" href="#"><i class="icon-linkedin-1"></i></a>
+								</li>
+								<li>
+									<a class="skype" href="#"><i class="icon-skype-2"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+                <!-- End Subscribe & Social Links Widget -->
+              
+                <!-- Start Copyright -->
+				<div class="copyright-section">
+					<div class="row">
+						<div class="col-md-6">
+							<p>© 2014 Trovabiomassa.com</p>
+						</div>
+						<div class="col-md-6">
+							<ul class="footer-nav">
+								<li><a href="/es/credits">Credits</a></li>
+								<li><a href="/es/sitemap.xml">Sitemap</a></li>
+								<li><a href="/es/privacy">Privacy Policy</a></li>
+								<li><a href="/es/contacts">Contatti</a></li>
+                                <li><a href="/es/admin">Admin</a></li>
+                                <li><a href="/es/coordinate">Geocoder</a></li>
+							</ul>
+						</div>						
+					</div>
+				</div>
+                <!-- End Copyright -->
+                
+			</div>
+		</footer>
+		<!-- End Footer -->
+      
+	</div>
+	<!-- End Container -->
+    
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top"><i class="icon-up-open-1"></i></a>
+	
+	<div id="loader">
+    	<div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+    </div>
+ <!-- navigazione template -->    
+
+<!-- modalbox 
+<div style="width:70px; position:fixed; right:15px; top:400px; z-index:999;">
+    <ul>
+        <li style="display:block; background:#4E741C; padding:10px; border-bottom:1px solid #E8E8E8;"><a href="/" style="color:#FFFFFF
+  !important;">Home</a></li>
+        {% if user.is_authenticated %}
+        <li style="display:block; background:#4E741C; padding:10px; border-bottom:1px solid #E8E8E8;"><a href="/profile" style="color:#FFFFFF
+  !important;">Tuo Profilo</a></li>
+        {% endif %}
+        <li style="display:block; background:#4E741C; padding:10px; border-bottom:1px solid #E8E8E8;"><a href="/cercabiomassa" style="color:#FFFFFF
+  !important;">Ricerca</a></li>
+        <li style="display:block; background:#4E741C; padding:10px; border-bottom:1px solid #E8E8E8;"><a href="/energia" style="color:#FFFFFF
+  !important;">Biomasse</a></li>
+    </ul>
+</div>
+ fine modalbox -->
+
+<!-- fine navigazione template -->
+
+<script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45025399-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+{% render_block "js" %}
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -136,6 +138,7 @@ class ProductCategory(models.Model):
     name                 = models.CharField(max_length=100) # es. Pellet, Nocciolino, Caldaia HT234
     burning_data         = models.TextField(null=True, blank=True)
     certif_data          = models.TextField(null=True, blank=True)
+    #country              = models.CharField(max_length=5, default='IT', null=True, blank=True) 
     
     def __unicode__(self):
         return str(self.name)

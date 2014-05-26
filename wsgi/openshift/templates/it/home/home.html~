@@ -1,0 +1,548 @@
+{% extends "layout.html" %}
+
+{% block script %}
+
+     <!-- trovabiomassa JS  -->
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+
+	<!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Start Modalbox -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Login Aziende</h4>
+      </div>
+      <div class="modal-body">
+ <!-- Start Contact Form -->
+                    	<div id="contact-form" class="contatct-form">
+                            <div class="loader"></div>
+                    		<form action="#" class="contactForm" name="cform" method="post">
+                            	<div class="row">
+                                	<div class="col-md-12">
+                                    	<label for="name">User ID<span class="required">*</span></label>
+                                        <span class="name-missing">Inserisci un nome valido</span>  
+                                        <input id="name" name="name" type="text" value="" size="30">
+                                    </div>
+                                    <div class="col-md-12">
+                                    	<label for="e-mail">Email<span class="required">*</span></label>
+                                        <span class="email-missing">Please enter a valid e-mail</span> 
+                                        <input id="e-mail" name="email" type="text" value="" size="30">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-md-12">
+           <input type="submit" name="submit" class="button" id="submit_btn" value="Login">
+			<input type="submit" name="submit" class="button" id="submit_btn" value="Password dimenticata">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Contact Form -->      
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">chiudi</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->                               
+ <!-- End Modalbox -->
+                       
+	<!-- Container -->
+	<div id="container">
+		
+        <!-- Start Header -->
+		<div class="hidden-header"></div>
+        <header class="clearfix">
+            
+            <!-- Start Top Bar -->
+			<div class="top-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+                            <!-- Start Contact Info -->
+							<ul class="contact-details">
+                            	<li><a href="#"><i class="icon-mobile-2"></i> +39 333 000 000</a></li>
+                                <li><a href="#"><i class="icon-mail-2"></i> info@trovabiomassa.it</a></li>
+                            </ul>
+                            <!-- End Contact Info -->
+						</div>
+						<div class="col-md-6">
+                            <!-- Start Social Links -->
+							<ul class="social-list">
+                            <li>
+									<a  class="login-social" data-toggle="modal" data-target="#myModal" data-placement="bottom" title="Login" href="#"><span class="label label-default">Login Aziende</span></a>
+								</li>
+                  
+                
+								<li>
+									<a class="facebook sh-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="icon-facebook-2"></i></a>
+								</li>
+								<li>
+									<a class="twitter sh-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="icon-twitter-2"></i></a>
+								</li>
+								<li>
+									<a class="google sh-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="icon-gplus"></i></a>
+								</li>
+                                <li>
+									<a class="linkdin sh-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="icon-linkedin"></i></a>
+								</li>
+								<li>
+									<a class="skype sh-tooltip" data-placement="bottom" title="Skype" href="#"><i class="icon-skype-2"></i></a>
+								</li>
+							</ul>
+                            <!-- End Social Links -->
+						</div>
+				  </div>
+				</div>
+			</div>
+            <!-- End Top Bar -->
+          
+			<!-- Start Header ( Logo & Navigation ) -->
+			<div class="navbar navbar-default navbar-top">
+				<div class="container">
+                
+					<div class="navbar-header col-md-2">
+                    
+                        <!-- Stat Toggle Nav Link For Mobiles -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<i class="icon-menu-1"></i>
+						</button>
+                        <!-- End Toggle Nav Link For Mobiles -->
+						<a class="navbar-brand" href="index.html"><img alt="" src="/static/images/logo.png"></a>
+					</div>
+             
+               
+               <div class="col-md-4" id="btn-azienda" style="float:right;">
+               <a href="#" class="btn-system btn-large">SEI UN PRODUTTORE O RIVENDITORE DI BIOMASSA?<br> <strong>INSERISCI LA TUA AZIENDA</strong></a>
+               </div>
+               
+               
+				</div>
+			</div>
+            <!-- End Header ( Logo & Naviagtion ) -->
+          
+		</header>
+		<!-- End Header -->
+      
+      
+      
+      
+		<!-- Start Home Slider -->
+		<div id="slider">
+        
+            <!-- START REVOLUTION SLIDER 3.1 rev5 fullwidth mode -->
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthbanner" >
+                    <ul>
+                    
+                    	<!-- SLIDE 1 -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
+                            <!-- MAIN IMAGE -->
+                            <img src="/static/images/slide-01-bg.jpg" data-fullwidthcentering="on" alt="slidebg2"  data-bgfit="cover" data-bgposition="top center" data-bgrepeat="no-repeat">
+                            
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption uppercase big_font_size boldest_font_weight dark_font_color sft start"
+                                data-x="540"
+                                data-y="125"
+                                
+                                data-speed="300"
+                                data-start="1600"
+                                data-easing="easeOutExpo">Piattaforma on-line<br/><span class="accent-color">per la geolocalizzazione<br> dei biocombustibili</span><br>
+                           
+                            </div>
+                            
+                           <!-- LAYER NR. 3 -->
+                            <div class="tp-caption mini_font_size light_font_weight gray_font_color sfr start"
+                                data-x="540"
+                                data-y="250"
+                                
+                                data-speed="300"
+                                data-start="2200"
+                                data-easing="easeOutExpo">Trova il tuo rivenditore<br/>Cerca informazioni utili per il tuo impianto termico.
+                            </div>
+                            
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption sfb start"
+                                data-x="540"
+                                data-y="314"
+                                
+                                data-speed="300"
+                                data-start="2500"
+                                data-easing="easeOutExpo"><a href="/cercabiomassa" class="tp-caption btn-system btn-large border-btn btn-gray">Trova Biomassa</a>
+                            </div>
+                            
+                            <!-- LAYER NR. 5 -->
+                            <div class="tp-caption sfl start"
+                                data-x="120"
+                                data-y="center"
+                                
+                                data-speed="1000"
+                                data-start="1000"
+                                data-easing="Power1.easeOut"><img src="/static/images/slide-02-image-01.png" alt="" />
+                            </div>
+                            
+                        </li>
+                        
+                        
+                        <!-- SLIDE 2  -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
+                            <!-- MAIN IMAGE -->
+                            <img src="/static/images/slide-01-bg.jpg" data-fullwidthcentering="on" alt="slidebg1"  data-bgfit="cover" data-bgposition="top center" data-bgrepeat="no-repeat">
+                            
+                            <!-- LAYER NR. 1 -->
+                              <div class="tp-caption sfr start"
+                                data-x="center"
+                                data-y="center"
+                                
+                                data-speed="600"
+                                data-start="1000"
+                                data-easing="Power1.easeOut"><img src="/static/images/logo-slider01.png" alt="" />
+                            </div>
+                            
+                            <!-- LAYER NR. 2 -->
+                             <div class="tp-caption fade start"
+                                data-x="center"
+                                data-y="center"
+                                
+                                data-speed="1200"
+                                data-start="1400"
+                                data-easing="Power1.easeOut"><img src="/static/images/slide-frecce02.png" alt="" />
+                            </div>
+                            
+                            <!-- LAYER NR. 3 -->
+                             <div class="tp-caption sft start"
+                                data-x="240"
+                                data-y="320"
+                                
+                                data-speed="600"
+                                data-start="3000"
+                                data-easing="easeOutExpo"><a href="#" class="btn-system btn-medium btn-green"><h3>PRODUTTORE</h3></a>
+                            </div>
+                            
+                            <!-- LAYER NR. 4 -->
+                             <div class="tp-caption sft start"
+                                data-x="710"
+                                data-y="320"
+                                
+                                data-speed="600"
+                                data-start="3000"
+                                data-easing="easeOutExpo"><a href="#" class="btn-system btn-medium btn-green"><h3>RIVENDITORE</h3></a>
+                            </div>
+                            
+                            <!-- LAYER NR. 5 -->
+                            <div class="tp-caption sft start"
+                                data-x="center"
+                                data-y="60"
+                                
+                                data-speed="600"
+                                data-start="3000"
+                                data-easing="easeOutExpo"><a href="#" class="btn-system btn-medium btn-green"><h3>UTENTE FINALE</h3></a>
+                            </div>
+                            
+                              <!-- LAYER NR. 5 -->
+                            <div class="tp-caption fade start"
+                                data-x="center"
+                                data-y="120"
+                                
+                                data-speed="1200"
+                                data-start="3600"
+                                data-easing="Power1.easeOut"><img src="/static/images/slide-frecce01.png" alt="" />
+                            </div>
+                            
+                        </li>
+                        
+                  <!-- SLIDE 3 -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
+                            <!-- MAIN IMAGE -->
+                            <img src="/static/images/slide-01-bg.jpg" data-fullwidthcentering="on" alt="slidebg2"  data-bgfit="cover" data-bgposition="top center" data-bgrepeat="no-repeat">
+                            
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption uppercase big_font_size boldest_font_weight dark_font_color sft start"
+                                data-x="540"
+                                data-y="125"
+                                
+                                data-speed="300"
+                                data-start="1600"
+                                data-easing="easeOutExpo"><span class="accent-color">Clicca </span><br>qui sotto
+                            </div>
+                            
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption medium_font_size regular_font_weight dark_font_color sfl start"
+                                data-x="540"
+                                data-y="208"
+                                
+                                data-speed="300"
+                                data-start="1900"
+                                data-easing="easeOutExpo">Per trovare il prodotto che stai cercando
+                            </div>
+                            
+                             <!-- LAYER NR. 4 -->
+                               <div class="tp-caption sfl start"
+                                data-x="120"
+                                data-y="center"
+                                
+                                data-speed="1000"
+                                data-start="1000"
+                                data-easing="Power1.easeOut"><img src="/static/images/slide-02-image-01.png" alt="" />
+                            </div>
+                            
+                            
+                            <!-- LAYER NR. 5 -->
+                         
+                            
+                              <div class="tp-caption sfb start"
+                                data-x="600"
+                                data-y="260"
+                                
+                                data-speed="1000"
+                                data-start="1600"
+                                data-easing="Power1.easeOut"><img src="/static/images/slide-freccia-down.png" alt="" />
+                            </div>
+                            
+                        </li>
+                              
+                        
+                        
+                    </ul>
+                    <div class="tp-bannertimer" style="visibility:hidden;"></div>
+                </div>
+            </div>
+            
+            <!-- THE SCRIPT INITIALISATION -->
+            <!-- LOOK THE DOCUMENTATION FOR MORE INFORMATIONS -->
+            <script type="text/javascript">
+                var revapi;
+                jQuery(document).ready(function() {
+					revapi = jQuery('.fullwidthbanner').revolution({
+						
+						delay:9000,
+						startwidth:1140,
+						startheight:450,
+						hideThumbs:200,
+						
+						thumbWidth:100,
+						thumbHeight:50,
+						thumbAmount:3,
+						
+						navigationType:"none",
+						navigationArrows:"solo",
+						navigationStyle:"round",
+						
+						touchenabled:"on",
+						onHoverStop:"on",
+						
+						navigationHAlign:"center",
+						navigationVAlign:"bottom",
+						navigationHOffset:0,
+						navigationVOffset:20,
+
+						soloArrowLeftHalign:"left",
+						soloArrowLeftValign:"center",
+						soloArrowLeftHOffset:20,
+						soloArrowLeftVOffset:0,
+
+						soloArrowRightHalign:"right",
+						soloArrowRightValign:"center",
+						soloArrowRightHOffset:20,
+						soloArrowRightVOffset:0,
+								
+						shadow:0,
+						fullWidth:"on",
+						fullScreen:"off",
+						lazyLoad:"on",
+
+						stopLoop:"off",
+						stopAfterLoops:-1,
+						stopAtSlide:-1,
+
+						shuffle:"off",
+						
+						hideSliderAtLimit:0,
+						hideCaptionAtLimit:0,
+						hideAllCaptionAtLilmit:0,
+						startWithSlide:0,	
+                	});
+                });
+            </script>
+                 
+        </div>
+        <!-- End Home Slider -->
+      
+      
+      
+
+		<!-- Start Content -->
+		<div id="content">
+			<div class="container">
+            
+            <!-- Start Page Menu -->
+ 		<div class="container">
+			<div class="row">
+                            <div id="main-nav">
+                            {% for v in products %}
+                <div class="menu-btn-tb"><a href="/cercabiomassa/{{v.1}}/"><i id="{{v.3}}" class="icon-largesquare-effect ico-effect"></i></a><div class="title-element">{{v.2}}</div></div>      
+                            {% endfor %}
+                            </div>
+                        </div>
+		</div>
+		<!-- End Page Menu -->
+
+         
+            
+                <!-- Start Services Icons -->
+            	<div class="row">
+                
+                            <!-- Divider -->
+                <div class="hr5" style="margin-top:40px; margin-bottom:40px;"></div>    
+                
+                 <!-- Start Icon Box 1-->
+                        <div class="col-md-3 service-box service-center">
+                            <div class="service-boxed">
+                                <div class="service-icon" style="margin-top:-25px;">
+                                    <i class="icon-users icon-medium-effect icon-effect-2 gray-icon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4>Chi Siamo</h4>
+                                    <p>Siamo un gruppo di giovani professionisti che mette insieme competenze ingegneristiche ed informatiche per rendere possibile un mercato delle biomasse di recupero pi&ugrave; efficente e quindi pi&ugrave; vantaggioso per tutti: imprenditori, clienti ed ambiente.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Icon Box 1-->
+                        
+                        <!-- Start Icon Box 2-->
+                        <div class="col-md-3 service-box service-center">
+                            <div class="service-boxed">
+                                <div class="service-icon" style="margin-top:-25px;">
+                                    <i class="icon-leaf icon-medium-effect icon-effect-2 gray-icon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4>Cosa Facciamo</h4>
+                                    <p>Mettiamo in contatto attivit&agrave; agricole e forestali, commerciali, consumatori, trasportatori per una integrazione conveniente della filiera energetica delle biomasse prodotte da scarti di lavorazioni agricole, forestali e da allevamenti. Nonch&egrave; delle altre fonti energetiche sostenibili o rinnovabili.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Icon Box 2-->
+                        
+                        <!-- Start Icon Box 3-->
+                        <div class="col-md-3 service-box service-center">
+                            <div class="service-boxed">
+                                <div class="service-icon" style="margin-top:-25px;">
+                                    <i class="icon-cog icon-medium-effect icon-effect-2 gray-icon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4>Come</h4>
+                                    <p>Tramite strumenti innovativi, rispettando standard nazionali ed internazionali, favorendo l&apos;abbattimento al minimo degli sprechi e delle emissioni di CO2. Adottiamo in toto la filosofia degli standard aperti in campo informatico tramite licenze opensource.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Icon Box 3-->
+                        
+                        <!-- Start Icon Box 4-->
+                        <div class="col-md-3 service-box service-center">
+                            <div class="service-boxed">
+                                <div class="service-icon" style="margin-top:-25px;">
+                                    <i class="icon-check icon-medium-effect icon-effect-2 gray-icon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4>Perchè</h4>
+                                    <p>Vogliamo rendere pi&ugrave; competitive ed efficenti le aziende che rispettano l&apos;ambiente anche grazie ai servizi che offriamo. Visto l&apos;elevato costo economico e sociale della produzione di energia, crediamo che una filiera sana possa far vivere meglio aziende e consumatori.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Icon Box 4-->  
+                   
+                </div>
+                <!-- End Services Icons -->
+                
+                <!-- Divider -->
+                <div class="hr5" style="margin-top:40px; margin-bottom:40px;"></div>
+                
+                <!-- Start Clients Carousel -->
+                <div class="our-clients">
+                    
+                    <!-- Classic Heading -->
+                	<h4 class="classic-title"><span>Partners</span></h4>
+                    
+                    <div class="clients-carousel custom-carousel touch-carousel" data-appeared-items="5">
+                    
+                        <!-- Client 1 -->
+                    	<div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 2 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 3 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 4 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 5 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 6 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 7 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                        <!-- Client 8 -->
+                        <div class="client-item item">
+                        	<a href="#"><img src="/static/images/sponsor.png" alt="" /></a>
+                    	</div>
+                        
+                	</div>
+                </div>
+                <!-- End Clients Carousel -->
+                
+             
+                         
+		  </div>
+		</div>
+		<!-- End Content -->
+
+    
+ {% endblock %}
+
+
+
+
