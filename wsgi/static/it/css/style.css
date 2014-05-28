@@ -4602,6 +4602,9 @@ margin-top: 6px;}
 #ico-sansa\+esausta{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 72px 0;}
 #ico-sansa\+esausta:hover, #ico-sansa\+esausta.hovered{ border:2px solid #7e611b;background:url(../images/icons/menu-icon.jpg) 72px -76px; z-index:999990;}
 
+#ico-orujo\+agotado{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 72px 0;}
+#ico-orujo\+agotado:hover, #ico-orujo\+agotado.hovered{ border:2px solid #7e611b;background:url(../images/icons/menu-icon.jpg) 72px -76px; z-index:999990;}
+
 
 .ico-effect:after {
 top: -2px;
