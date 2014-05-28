@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "es/layout.html" %}
 
 {% block script %}
     <!-- trovabiomassa JS  -->
@@ -49,7 +49,7 @@ var icon = 'ico-'+pdcts[product]
                                    {% if v.2 == product %}
                             <div class="menu-btn-tb"><i id="{{v.3}}" class="hovered icon-largesquare-effect ico-effect"></i><div class="title-element">{{v.2}}</div></div>      
                                    {% else %}
-                                   <div class="menu-btn-tb"><a href="/it/cercabiomassa/{{v.1}}/"><i id="{{v.3}}" class="icon-largesquare-effect ico-effect"></i></a><div class="title-element">{{v.2}}</div></div> 
+                                   <div class="menu-btn-tb"><a href="/es/busquabiomasa/{{v.1}}/"><i id="{{v.3}}" class="icon-largesquare-effect ico-effect"></i></a><div class="title-element">{{v.2}}</div></div> 
                                    {% endif %}
 
                             {% endfor %}		
@@ -70,9 +70,9 @@ var icon = 'ico-'+pdcts[product]
                         <!-- Start Image Service Box 2 -->
                         <div class="col-sm-4 image-service-box">
                             <ul class="scheda-list">
-                            <li><h4>Regione</h4></li>
+                            <li><h4>Regi&oacute;n</h4></li>
                             <li><select class="form-control" id="reg">
-                                <option value="0">Tutte le regioni</option>
+                                <option value="0">Todos</option>
                                 {% for k,v in regions.items %}
                                     {% if k == region %}
                                         <option value="{{v.0|safe}}" selected="selected">{{k|safe}}</option>
@@ -85,7 +85,7 @@ var icon = 'ico-'+pdcts[product]
                             <li><h4>Provincia</h4></li>
 
              <li><select class="form-control" name="prov" id="prov">
-                    <option value="0">Tutte le province</option>
+                    <option value="0">Todos</option>
                     </select></li>
 
             
@@ -94,7 +94,7 @@ var icon = 'ico-'+pdcts[product]
                         <!-- End Image Service Box 2 -->
                 
 
-<li><a href="#" class="btn-large btn-trovabiomassa" id="biomassa-searchFuel" name="searchFuel">Trova Biomassa</a></li>
+<li><a href="#" class="btn-large btn-trovabiomassa" id="biomassa-searchFuel" name="searchFuel">Busqua Biomasa</a></li>
 
 
     </ul>           </div>      </div>
@@ -130,9 +130,9 @@ var icon = 'ico-'+pdcts[product]
                             
                             <!-- Nav Tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="icon-doc-text-1"></i>Descrizione</a></li>
-                                <li><a href="#tab-2" data-toggle="tab"><i class="icon-beaker"></i>Caratterizzazione energetica</a></li>
-                                <li><a href="#tab-5" data-toggle="tab"><i class="icon-droplet"></i>Certificazioni</a></li>
+                                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="icon-doc-text-1"></i>Descripción</a></li>
+                                <li><a href="#tab-2" data-toggle="tab"><i class="icon-beaker"></i>Caracterizaci&oacute;n energ&eacute;tica</a></li>
+                                <li><a href="#tab-5" data-toggle="tab"><i class="icon-droplet"></i>Certificaciones</a></li>
                             </ul>
                             
                             <!-- Tab panels -->
@@ -145,7 +145,7 @@ var icon = 'ico-'+pdcts[product]
                                 <div class="tab-pane fade" id="tab-2">
                                         <div class="row">
                                             <div class="col-md-8">
-                                            	<p><a href="http://www.sibesrl.it"><img class="" style="float:left; width:auto;" alt="" src="http://www.sibesrl.it/templates/sibe/media/img/main_logo.jpg" /></a>SIBE S.r.l. - Sistemi Innovativi Biomasse Energetiche <br/> Spin-off dell'Università Politecnica delle Marche - Via S. Totti, 3 - 60131 AN <br/> P.IVA e C.F. 02324870423 <br/> Ufficio : 071 7109305 (tel) 071 9945896 (fax) - www.sibesrl.it - email: info@sibesrl.it
+                                            	<p><a href="http://www.sibesrl.it"><img class="" style="float:left; width:auto;" alt="" src="http://www.sibesrl.it/templates/sibe/media/img/main_logo.jpg" /></a>SIBE S.r.l. - Sistemi Innovativi Biomasse Energetiche <br/> Spin-off de la Universidad Polit&eacute;cnica des Marche - Via S. Totti, 3 - 60131 AN <br/> P.IVA e C.F. 02324870423 <br/> Ufficio : 071 7109305 (tel) 071 9945896 (fax) - www.sibesrl.it - email: info@sibesrl.it
                                               </p>
                                             </div>
                                         </div>
