@@ -140,7 +140,11 @@ class ProductCategory(models.Model):
     certif_data          = models.TextField(null=True, blank=True)
     
     def __unicode__(self):
-        return str(self.name)
+        new = ''
+        for n in self.name:
+             new += unicode(n).encode('utf-8')
+
+        return str(new)
         
 class Package(models.Model):
     class Meta:

@@ -1,11 +1,17 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from models import Company, Certificate, ProductCategory, Package, Fuel, Deliver, Boiler, CompanySuppling, ProductGroup
 from django.db.models import Q
 from urllib import quote_plus
 
+from django.utils.encoding import smart_str, force_text
+
 def doUrlify(name):
+    name = name.encode('utf-8')
     name = name.lower()
-    name = quote_plus(name.encode('utf8'))
+
+    name = quote_plus(name)
     return name
 
 
@@ -27,6 +33,10 @@ class ProductCategoryAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.who = request.user
         name = obj.name
+        name = name.encode("utf-8")
+        name = force_text(name, encoding='utf-8', strings_only=False, errors='strict')
+        print name
+        obj.name = name
         name = doUrlify(name)
         obj.slug = name
         obj.save()

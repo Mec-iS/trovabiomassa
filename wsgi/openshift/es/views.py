@@ -7,9 +7,20 @@ import json
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from TrovaBiomassa import TrovaBiomassa, ToBuyBiomassFuels, productsList
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, HttpResponse
 from django.views.decorators.http import require_POST
 from django.core.context_processors import csrf
+
+import locale
+import sys
+ 
+def view_locale(request):
+    loc_info = "getlocale: " + str(locale.getlocale()) + \
+        "<br/>getdefaultlocale(): " + str(locale.getdefaultlocale()) + \
+        "<br/>fs_encoding: " + str(sys.getfilesystemencoding()) + \
+        "<br/>sys default encoding: " + str(sys.getdefaultencoding())
+    return HttpResponse(loc_info)
+
 
 @ensure_csrf_cookie
 def home(request):

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # Django settings for openshift project.
-import imp, os
+import imp, os, sys
+
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 # a setting to determine whether we are running on OpenShift
 ON_OPENSHIFT = False

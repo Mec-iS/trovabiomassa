@@ -4605,6 +4605,26 @@ margin-top: 6px;}
 #ico-orujo\+agotado{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 72px 0;}
 #ico-orujo\+agotado:hover, #ico-orujo\+agotado.hovered{ border:2px solid #7e611b;background:url(../images/icons/menu-icon.jpg) 72px -76px; z-index:999990;}
 
+#ico-le\%C3\%B1a{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 228px 0;}
+#ico-le\%C3\%B1a:hover, #ico-le\%C3\%B1a.hovered{ border:2px solid #613b16;background:url(../images/icons/menu-icon.jpg) 228px -76px; z-index:999990;}
+
+#ico-c\%C3\%A1scaras\+de\+nueces\+de\+pino{border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 456px 0;}
+#ico-c\%C3\%A1scaras\+de\+nueces\+de\+pino:hover, #ico-c\%C3\%A1scaras\+de\+nueces\+de\+pino.hovered{ border:2px solid #ac9a38; background:url(../images/icons/menu-icon.jpg) 456px -76px; z-index:999990;}
+
+#ico-c\%C3\%A1scaras\+de\+almendra{ 	 border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 380px 0;}
+#ico-c\%C3\%A1scaras\+de\+almendra:hover, #ico-c\%C3\%A1scaras\+de\+almendra.hovered{ border:2px solid #ac8d38;background:url(../images/icons/menu-icon.jpg) 380px -76px; z-index:999990;}
+
+#ico-semilla\+de\+durazno{ 	 border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 532px 0;}
+#ico-semilla\+de\+durazno:hover, #ico-semilla\+de\+durazno.hovered{ border:2px solid #a0401a;background:url(../images/icons/menu-icon.jpg) 532px -76px; z-index:999990;}
+
+#ico-residuo\+de\+man\%C3\%AD{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 152px 0;}
+#ico-residuo\+de\+man\%C3\%AD:hover, #ico-residuo\+de\+man\%C3\%AD.hovered{ border:2px solid #523113;background:url(../images/icons/menu-icon.jpg) 153px -76px; z-index:999990;}
+
+#ico-c\%C3\%A1scaras\+de\+avellana{ border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 608px 0;}
+#ico-c\%C3\%A1scaras\+de\+avellana:hover, #ico-c\%C3\%A1scaras\+de\+avellana.hovered{ border:2px solid #92592b; background:url(../images/icons/menu-icon.jpg) 608px -76px; z-index:999990;}
+
+#ico-astillas\+de\+madera{ 	 border:2px solid #3f3f3f; width:76px; height:76px; background:url(../images/icons/menu-icon.jpg) 304px 0;}
+#ico-astillas\+de\+madera:hover, #ico-astillas\+de\+madera.hovered{ border:2px solid #caa217;background:url(../images/icons/menu-icon.jpg) 304px -76px; z-index:999990;}
 
 .ico-effect:after {
 top: -2px;
