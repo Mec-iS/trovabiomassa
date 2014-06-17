@@ -60,6 +60,9 @@ urlpatterns = patterns('',
         'django.contrib.auth.views.password_reset_complete', {'template_name': 'users/registration/password_reset_complete.html'}, 
         name='password_reset_complete'),
 
+    url(r'^it/sitemap\.xml$', 'it.sitemap.Sitemap'),
+    url(r'^it/robots.txt$', 'it.sitemap.Robots'),
+
     ############## Spanish ##################
     url(r'^es/encontra/(?P<company>[a-z0-9\+\.\'\(\)]*)/(?P<id>\d+)/(?P<product>[a-z\+]*)/', 'es.views.bioshow', name='vetrina'),
     url(r'^es/busquabiomasa/(?P<product>[a-z\+\-]*)/(?P<region>[a-z\+\-]*)/(?P<province>[a-z\+\-]*)/', 'es.views.find'),
@@ -109,7 +112,8 @@ urlpatterns = patterns('',
         'django.contrib.auth.views.password_reset_complete', {'template_name': 'users/registration/password_reset_complete.html'}, 
         name='password_reset_complete'),
 
-
+    url(r'^es/sitemap\.xml$', 'es.sitemap.Sitemap'),
+    url(r'^es/robots.txt$', 'es.sitemap.Robots'),
 
     # internazionalization
     #url(r'^/es/', include(es.urls)),
