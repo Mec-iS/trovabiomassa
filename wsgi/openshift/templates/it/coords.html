@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block script %}
+
+     <!-- trovabiomassa JS  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="/static/js/modernizrr.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/js/nivo-lightbox.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="/static/js/count-to.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lettering.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=it"></script>
+
+  <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+{% endblock %}
+{% block body %}
+
+
+<div id="container">
+
+    <legend>Inserisci l&apos;indirizzo e trova le coordinate</legend> 
+      <div class="row">
+       <div class="col-md-1"></div>
+       <div class="col-md-5">
+         <div class="form-group">
+           <label class="sr-only" for="cmpaddress">Indirizzo</label>
+           <input class="form-control" type="text" name="cmpaddress" placeholder="Indirizzo, Localit&agrave; o Frazione">
+           <span class="help-block">es. "via settembrini 15" o "localit&agrave; visconti 13"</span>
+         </div>
+       </div>
+       <div class="col-md-3">
+         <div class="form-group">
+           <label class="sr-only" for="cmpcity">Citt&agrave; o Localit&agrave;</label>
+           <input class="form-control" type="text" name="cmpcity" placeholder="Comune">
+           <span class="help-block">es. "empoli"</span>
+         </div>
+       </div>
+      </div> 
+      
+       <div class="row" >
+       <div class="col-md-4"></div>
+       <div class="col-md-4">
+           <div class="form-group">
+           <a class="btn btn-warning" onclick="codeAddress()" id="findGeo">Trova Coordinate</a>
+           </div>
+       </div>
+       </div>
+       
+       <div class="row" style="margin-top:5%;">
+       <div class="col-md-1"></div>
+       <div class="col-md-2">
+         <div class="form-group">
+           <label class="sr-only" for="cmplat">Latitudine</label>
+           <input class="form-control" type="text" name="cmplat"  placeholder="Latitudine">
+         </div>
+       </div>
+       <div class="col-md-2">
+         <div class="form-group">
+           <label class="sr-only" for="cmplng">Longitudine</label>
+           <input class="form-control" type="text" name="cmplng"  placeholder="Longitudine">
+         </div>
+       </div>
+      </div> 
+     
+      <div class="row">
+       <div class="col-md-1"></div>
+       <div class="col-md-2">
+         <div class="form-group">
+           <label class="sr-only" for="cmpprov">Provincia</label>
+           <input class="form-control" type="text"  name="cmpprov" placeholder="Provincia">
+           
+         </div>
+       </div>
+       <div class="col-md-5">
+         <div class="form-group">
+           <label class="sr-only" for="cmpregion">Regione</label>
+           <input class="form-control" type="text"  name="cmpregion" placeholder="Regione">
+           
+         </div>
+       </div>
+       <div class="col-md-2">
+         <div class="form-group">
+           <label class="sr-only" for="cmpstate">Paese</label>
+           <input class="form-control" type="text"  name="cmpstate" value="Italia">
+         </div>
+       </div>
+      </div> <!-- end of form's 2nd row -->
+      
+</div>    
+      
+<script>
+
+function codeAddress() {
+    
+    toCode = []
+    toCode.push(document.getElementsByName('cmpaddress')[0].value);
+    //toCode.push(document.getElementsByName('cmpCAP')[0].value);
+    toCode.push(document.getElementsByName('cmpcity')[0].value); 
+    var address = toCode.join(' ');
+    var geocoder = new google.maps.Geocoder();
+    
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results[0])
+      obj = results[0]
+      // set cmpaddress, cmpcity, cmpCAP, cmpregion, cmpregion, cmpstate, cmpprov, cmplat, cmplng,
+      address = obj.address_components[1].short_name + ' ' + obj.address_components[0].short_name
+      
+      city1 = obj.address_components[2].short_name 
+      city2 = obj.address_components[3].short_name
+      if (city1 != city2){
+          city = obj.address_components[2].short_name + ' ' + obj.address_components[3].short_name
+        } else { city = city1 }
+      
+      
+      $('input[name=cmpaddress]').val(address)
+      $('input[name=cmpcity]').val(city)
+      $('input[name=cmpCAP]').val(obj.address_components[7].short_name)
+      $('input[name=cmpprov]').val(obj.address_components[4].long_name)
+      $('input[name=cmpregion]').val(obj.address_components[5].short_name)
+      $('input[name=cmpstate]').val(obj.address_components[6].short_name)
+      $('input[name=cmplat]').val(obj.geometry.location.d)
+      $('input[name=cmplng]').val(obj.geometry.location.e)
+            
+    } else {
+      alert('Errore in Google Geocode: ' + status);
+    }
+  });
+}
+
+
+</script>
+
+{% endblock %}
