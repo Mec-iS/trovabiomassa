@@ -2,6 +2,7 @@
 
 This a Django WebApp (directly deployable on Openshift.com), it is a geolocating app for green fuels resellers. It provides a Django CMS interface and a front-end that let users to browse the resellers on a Google Maps' map. Data persistence and caching are based on PostGRE SQL and REDIS.
 
+Python/Django code in [this directory](https://github.com/Mec-iS/trovabiomassa/tree/master/wsgi/openshift)
 Demo at [trovabiomassa.com](http://trovabiomassa.com)
 
 Copyright 2013 Trovabiomassa.com
